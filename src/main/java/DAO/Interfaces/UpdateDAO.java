@@ -1,0 +1,1 @@
+package DAO.Interfaces;import Exceptions.DatabaseAccessException;public interface UpdateDAO <T, R> extends DAO<T, R> {    void update(R r) throws DatabaseAccessException;}
