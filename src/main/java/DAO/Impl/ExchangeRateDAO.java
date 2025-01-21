@@ -1,6 +1,6 @@
-package DAO.impl;
+package DAO.Impl;
 
-import DAO.DataBaseConnection;
+import DAO.DataBaseSqlite;
 import DAO.Interfaces.UpdateDAO;
 import DAO.Mapper.ExchangeRateMapper;
 import Entity.ExchangeRate;
@@ -13,20 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ExchangeRateDAO implements UpdateDAO<Integer, ExchangeRate> {
+public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
 
-    DataBaseConnection dataBaseConnection;
+    DataBaseSqlite dataBaseSqlite;
     ExchangeRateMapper exchangeRateMapper = new ExchangeRateMapper();
 
-    public ExchangeRateDAO(DataBaseConnection dataBaseConnection) {
-        this.dataBaseConnection = dataBaseConnection;
+    public ExchangeRateDAO(DataBaseSqlite dataBaseSqlite) {
+        this.dataBaseSqlite = dataBaseSqlite;
     }
 
     @Override
     public List<ExchangeRate> getAll() throws DatabaseAccessException {
         List<ExchangeRate> exchangeRates = new ArrayList<>();
 
-        try (Connection connection = dataBaseConnection.getConnection()) {
+        try (Connection connection = dataBaseSqlite.getConnection()) {
 
             Statement statement = connection.createStatement();
 
@@ -43,12 +43,45 @@ public class ExchangeRateDAO implements UpdateDAO<Integer, ExchangeRate> {
     }
 
     @Override
-    public Optional<ExchangeRate> get(Integer id) throws DatabaseAccessException {
+    public Optional<ExchangeRate> get(String codes) throws DatabaseAccessException {
         Optional<ExchangeRate> exchangeRateOptional = Optional.empty();
 
-        try (Connection connection = dataBaseConnection.getConnection()) {
+        try (Connection connection = dataBaseSqlite.getConnection()) {
 
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM exchange_rate WHERE id = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                        "SELECT " +
+                                "er.id AS id, " +
+                                "er.base_currency_id AS base_currency_id, " +
+                                "er.target_currency_id AS target_currency_id, " +
+                                "er.rate AS rate " +
+                            "FROM exchange_rate AS er " +
+                            "JOIN currencies AS c ON er.base_currency_id = c.id " +
+                            "JOIN currencies AS cu ON er.target_currency_id = cu.id " +
+                            "WHERE c.code = ? AND cu.code =?;"
+            );
+            preparedStatement.setString(1, codes.substring(0, 3));
+            preparedStatement.setString(2, codes.substring(3, 6));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                exchangeRateOptional = Optional.of(exchangeRateMapper.toExchangeRate(resultSet));
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseAccessException("Problems accessing the database!");
+        }
+        return exchangeRateOptional;
+    }
+
+    @Override
+    public Optional<ExchangeRate> getById(Integer id) throws DatabaseAccessException {
+        Optional<ExchangeRate> exchangeRateOptional = Optional.empty();
+
+        try (Connection connection = dataBaseSqlite.getConnection()) {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM exchange_rate WHERE id = ?;"
+            );
             preparedStatement.setInt(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -65,7 +98,7 @@ public class ExchangeRateDAO implements UpdateDAO<Integer, ExchangeRate> {
     @Override
     public ExchangeRate save(ExchangeRate exchangeRate) throws DataDuplicationException, DatabaseAccessException, NoDataFoundException {
 
-        try (Connection connection = dataBaseConnection.getConnection()) {
+        try (Connection connection = dataBaseSqlite.getConnection()) {
 
             PreparedStatement preparedStatement = connection
                     .prepareStatement("INSERT INTO exchange_rate(base_currency_id, target_currency_id, rate) VALUES(?, ?, ?)" +
@@ -91,7 +124,7 @@ public class ExchangeRateDAO implements UpdateDAO<Integer, ExchangeRate> {
     @Override
     public void update(ExchangeRate exchangeRate) throws DatabaseAccessException {
 
-        try (Connection connection = dataBaseConnection.getConnection()) {
+        try (Connection connection = dataBaseSqlite.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                         "UPDATE exchange_rate " +

@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DataBaseConnection {
+public class DataBaseSqlite {
 
     private static final String PROTOCOL = "jdbc:sqlite:/Users/egorkrylov/IdeaProjects/exchanger-API/src/main/resources/exchangeRate.db";
 
@@ -21,4 +21,5 @@ public class DataBaseConnection {
             throw new RuntimeException(e);
         }
     }
+
 }
