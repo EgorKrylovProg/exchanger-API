@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public class CurrencyMapper {
 
-    public CurrencyReadingResponse toCurrencyDto(Currency currency) {
+    public CurrencyReadingResponse toCurrencyReadingResponse(Currency currency) {
         return new CurrencyReadingResponse(
                 currency.getId(),
                 currency.getFullName(),

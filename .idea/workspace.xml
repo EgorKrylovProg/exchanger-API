@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="914f3df3-9684-4702-8b96-e0e89a2fb359" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/CurrencyServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Mapper/CurrencyMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Serializer/CurrencySerializerToJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyCreatingRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyReadingRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyReadingResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Exceptions/IncorrectUrlException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/CurrencyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangeRateService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/Interface/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/Interface/UpdatableService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrencyServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeRateServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DataBaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DataBaseSqlite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/impl/CurrenciesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/CurrenciesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/impl/ExchangeRateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CurrencyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrenciesServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Mapper/CurrencyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Mapper/CurrencyMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyReadingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyReadingRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

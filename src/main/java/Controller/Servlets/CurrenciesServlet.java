@@ -1,9 +1,8 @@
-package Controller;
+package Controller.Servlets;
 
 import Controller.Serializer.CurrencySerializerToJson;
 import Dto.Currency.CurrencyCreatingRequest;
 import Dto.Currency.CurrencyReadingResponse;
-import Dto.Currency.CurrencyReadingRequest;
 import Entity.Currency;
 import Exceptions.*;
 import Service.Impl.CurrencyService;
@@ -17,8 +16,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/currencies/*")
-public class CurrencyServlet extends HttpServlet {
+@WebServlet("/currencies")
+public class CurrenciesServlet extends HttpServlet {
 
     private final Service<String, Currency> currencyService = new CurrencyService();
     private final CurrencySerializerToJson serializerToJson = new CurrencySerializerToJson();
@@ -30,31 +29,16 @@ public class CurrencyServlet extends HttpServlet {
         resp.setContentType("json");
 
         try {
-            String jsonResponse;
 
-            if (req.getPathInfo() != null) {
-                CurrencyReadingRequest currencyReadingRequest = mapper.toCurrencyReadingRequest(req);
-
-                CurrencyReadingResponse currencyReadingResponse = mapper.toCurrencyDto(currencyService.read(currencyReadingRequest.getCode()));
-                jsonResponse = serializerToJson.serializeDto(currencyReadingResponse);
-            } else {
-                List<CurrencyReadingResponse> currenciesDto = currencyService.readAll().stream().map(mapper::toCurrencyDto).toList();
-                jsonResponse = serializerToJson.serializeListDto(currenciesDto);
-            }
+            List<CurrencyReadingResponse> currenciesDto = currencyService.readAll().stream().map(mapper::toCurrencyReadingResponse).toList();
+            String jsonResponse = serializerToJson.serializeListDto(currenciesDto);
 
             writer.print(jsonResponse);
             resp.setStatus(200);
         } catch (DatabaseAccessException e) {
             writer.print(e);
             resp.setStatus(500);
-        } catch (NoDataFoundException e) {
-            writer.print(e);
-            resp.setStatus(404);
-        } catch (IncorrectUrlException e) {
-            writer.print(e);
-            resp.setStatus(400);
-        }
-        finally {
+        } finally {
             writer.close();
         }
     }
@@ -68,7 +52,7 @@ public class CurrencyServlet extends HttpServlet {
 
             CurrencyCreatingRequest currencyForCreating = mapper.toCurrencyCreatingRequest(req);
             Currency currency = currencyService.create(mapper.toCurrency(currencyForCreating));
-            String jsonResponse = serializerToJson.serializeDto(mapper.toCurrencyDto(currency));
+            String jsonResponse = serializerToJson.serializeDto(mapper.toCurrencyReadingResponse(currency));
 
             writer.print(jsonResponse);
             resp.setStatus(201);

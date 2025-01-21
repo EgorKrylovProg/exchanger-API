@@ -18,8 +18,8 @@ public class CurrencyReadingRequest {
     }
 
     public void setCode(String code) throws IncorrectUrlException {
-        if (code.isBlank() || code.length() != 3) {
-            throw new IncorrectUrlException("Incorrect currency code in the address!");
+        if (code == null || code.isBlank() || code.length() != 3) {
+            throw new IncorrectUrlException("Incorrect URL address!");
         }
         this.code = code;
     }
