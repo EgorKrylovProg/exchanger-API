@@ -30,7 +30,22 @@ public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM exchange_rate;");
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT " +
+                            "er.id AS id," +
+                            "c.id AS base_currency_id, " +
+                            "c.code AS base_currency_code, " +
+                            "c.full_name AS base_currency_name, " +
+                            "c.sign AS base_currency_sign, " +
+                            "cu.id AS target_currency_id, " +
+                            "cu.code AS target_currency_code, " +
+                            "cu.full_name AS target_currency_name, " +
+                            "cu.sign AS target_currency_sign, " +
+                            "er.rate AS rate " +
+                         "FROM exchange_rate AS er " +
+                         "JOIN currencies AS c ON er.base_currency_id = c.id " +
+                         "JOIN currencies AS cu ON er.target_currency_id = cu.id;"
+            );
             while (resultSet.next()) {
                 exchangeRates.add(exchangeRateMapper.toExchangeRate(resultSet));
             }
@@ -50,9 +65,15 @@ public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                         "SELECT " +
-                                "er.id AS id, " +
-                                "er.base_currency_id AS base_currency_id, " +
-                                "er.target_currency_id AS target_currency_id, " +
+                                "er.id AS id," +
+                                "c.id AS base_currency_id, " +
+                                "c.code AS base_currency_code, " +
+                                "c.full_name AS base_currency_name, " +
+                                "c.sign AS base_currency_sign, " +
+                                "cu.id AS target_currency_id, " +
+                                "cu.code AS target_currency_code, " +
+                                "cu.full_name AS target_currency_name, " +
+                                "cu.sign AS target_currency_sign, " +
                                 "er.rate AS rate " +
                             "FROM exchange_rate AS er " +
                             "JOIN currencies AS c ON er.base_currency_id = c.id " +
@@ -80,7 +101,21 @@ public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
         try (Connection connection = dataBaseSqlite.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM exchange_rate WHERE id = ?;"
+                    "SELECT " +
+                            "er.id AS id," +
+                            "c.id AS base_currency_id, " +
+                            "c.code AS base_currency_code, " +
+                            "c.full_name AS base_currency_name, " +
+                            "c.sign AS base_currency_sign, " +
+                            "cu.id AS target_currency_id, " +
+                            "cu.code AS target_currency_code, " +
+                            "cu.full_name AS target_currency_name, " +
+                            "cu.sign AS target_currency_sign, " +
+                            "er.rate AS rate " +
+                        "FROM exchange_rate AS er " +
+                        "JOIN currencies AS c ON er.base_currency_id = c.id " +
+                        "JOIN currencies AS cu ON er.target_currency_id = cu.id " +
+                        "WHERE er.id = ?;"
             );
             preparedStatement.setInt(1, id);
 
@@ -103,8 +138,8 @@ public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("INSERT INTO exchange_rate(base_currency_id, target_currency_id, rate) VALUES(?, ?, ?)" +
                             "RETURNING id;", Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, exchangeRate.getId());
-            preparedStatement.setInt(2, exchangeRate.getBaseCurrencyId());
+            preparedStatement.setInt(1, exchangeRate.getBaseCurrency().getId());
+            preparedStatement.setInt(2, exchangeRate.getTargetCurrency().getId());
             preparedStatement.setDouble(3, exchangeRate.getRate());
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -130,6 +165,8 @@ public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
                         "UPDATE exchange_rate " +
                             "SET rate = ?" +
                             "WHERE id = ?;");
+            preparedStatement.setDouble(1, exchangeRate.getRate());
+            preparedStatement.setInt(2, exchangeRate.getId());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
