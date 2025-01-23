@@ -1,22 +1,22 @@
 package Dto.ExchangeRate;
 
-import Dto.Currency.CurrencyReadingResponse;
+import Dto.Currency.CurrencyResponse;
 
-public class ExchangeRateReadingResp {
+public class ExchangeRateResp {
 
     private Integer id;
-    private CurrencyReadingResponse baseCurrency;
-    private CurrencyReadingResponse targetCurrency;
+    private CurrencyResponse baseCurrency;
+    private CurrencyResponse targetCurrency;
     private Double rate;
 
-    public ExchangeRateReadingResp(Integer id, CurrencyReadingResponse baseCurrency, CurrencyReadingResponse targetCurrency, Double rate) {
+    public ExchangeRateResp(Integer id, CurrencyResponse baseCurrency, CurrencyResponse targetCurrency, Double rate) {
         this.id = id;
         this.baseCurrency = baseCurrency;
         this.targetCurrency = targetCurrency;
         this.rate = rate;
     }
 
-    public ExchangeRateReadingResp() {
+    public ExchangeRateResp() {
     }
 
     public Integer getId() {
@@ -27,19 +27,19 @@ public class ExchangeRateReadingResp {
         this.id = id;
     }
 
-    public CurrencyReadingResponse getBaseCurrency() {
+    public CurrencyResponse getBaseCurrency() {
         return baseCurrency;
     }
 
-    public void setBaseCurrency(CurrencyReadingResponse baseCurrency) {
+    public void setBaseCurrency(CurrencyResponse baseCurrency) {
         this.baseCurrency = baseCurrency;
     }
 
-    public CurrencyReadingResponse getTargetCurrency() {
+    public CurrencyResponse getTargetCurrency() {
         return targetCurrency;
     }
 
-    public void setTargetCurrency(CurrencyReadingResponse targetCurrency) {
+    public void setTargetCurrency(CurrencyResponse targetCurrency) {
         this.targetCurrency = targetCurrency;
     }
 

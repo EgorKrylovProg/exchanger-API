@@ -24,8 +24,8 @@ public class ExchangeRateService implements UpdatableService<String, ExchangeRat
     }
 
     @Override
-    public ExchangeRate read(String codes) throws DatabaseAccessException, NoDataFoundException {
-        return exchangeRateDAO.get(codes)
+    public ExchangeRate read(String currencyPairCodes) throws DatabaseAccessException, NoDataFoundException {
+        return exchangeRateDAO.get(currencyPairCodes)
                 .orElseThrow(() -> new NoDataFoundException("The exchange rate is missing from the database!"));
     }
 

@@ -3,7 +3,7 @@ package Controller.Servlets;
 import Controller.Mapper.CurrencyMapper;
 import Controller.Serializer.CurrencySerializerToJson;
 import Dto.Currency.CurrencyReadingRequest;
-import Dto.Currency.CurrencyReadingResponse;
+import Dto.Currency.CurrencyResponse;
 import Entity.Currency;
 import Exceptions.DatabaseAccessException;
 import Exceptions.IncorrectUrlException;
@@ -30,10 +30,10 @@ public class CurrencyServlet extends HttpServlet {
         resp.setContentType("json");
 
         try {
-            CurrencyReadingRequest currencyReadingRequest = mapper.toCurrencyReadingRequest(req);
+            CurrencyReadingRequest currencyReadingRequest = mapper.toReadingRequest(req);
 
-            CurrencyReadingResponse currencyReadingResponse = mapper.toCurrencyReadingResponse(currencyService.read(currencyReadingRequest.getCode()));
-            String jsonResponse = serializerToJson.serializeDto(currencyReadingResponse);
+            CurrencyResponse dtoResponse = mapper.toDtoResponse(currencyService.read(currencyReadingRequest.getCode()));
+            String jsonResponse = serializerToJson.serializeDto(dtoResponse);
 
             writer.print(jsonResponse);
             resp.setStatus(200);

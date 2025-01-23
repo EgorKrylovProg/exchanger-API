@@ -1,18 +1,18 @@
 package Controller.Serializer;
 
-import Dto.Currency.CurrencyReadingResponse;
+import Dto.Currency.CurrencyResponse;
 
 import java.util.List;
 
 public class CurrencySerializerToJson {
 
-    public String serializeDto(CurrencyReadingResponse currencyReadingResponse) {
+    public String serializeDto(CurrencyResponse currencyReadingResponse) {
         return currencyReadingResponse.toString();
     }
 
-    public String serializeListDto(List<CurrencyReadingResponse> currenciesDto) {
+    public String serializeListDto(List<CurrencyResponse> currenciesDto) {
         StringBuilder jsonCurrencies = new StringBuilder("[");
-        for (CurrencyReadingResponse dto: currenciesDto) {
+        for (CurrencyResponse dto: currenciesDto) {
             jsonCurrencies.append(dto);
             jsonCurrencies.append(",");
         }

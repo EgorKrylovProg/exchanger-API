@@ -1,19 +1,18 @@
 package Controller.Mapper;
 
 import Dto.Currency.CurrencyCreatingRequest;
-import Dto.Currency.CurrencyReadingResponse;
+import Dto.Currency.CurrencyResponse;
 import Dto.Currency.CurrencyReadingRequest;
 import Entity.Currency;
 import Exceptions.IncorrectDataException;
 import Exceptions.IncorrectUrlException;
-import Exceptions.NoDataFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 
 
 public class CurrencyMapper {
 
-    public CurrencyReadingResponse toCurrencyReadingResponse(Currency currency) {
-        return new CurrencyReadingResponse(
+    public CurrencyResponse toDtoResponse(Currency currency) {
+        return new CurrencyResponse(
                 currency.getId(),
                 currency.getFullName(),
                 currency.getCode(),
@@ -21,11 +20,11 @@ public class CurrencyMapper {
         );
     }
 
-    public CurrencyReadingRequest toCurrencyReadingRequest(HttpServletRequest request) throws IncorrectUrlException {
+    public CurrencyReadingRequest toReadingRequest(HttpServletRequest request) throws IncorrectUrlException {
         return new CurrencyReadingRequest(request.getPathInfo().substring(1));
     }
 
-    public CurrencyCreatingRequest toCurrencyCreatingRequest(HttpServletRequest request) throws IncorrectDataException, NoDataFoundException {
+    public CurrencyCreatingRequest toCreatingRequest(HttpServletRequest request) throws IncorrectDataException, IncorrectUrlException {
         return new CurrencyCreatingRequest(
                 request.getParameter("code"),
                 request.getParameter("name"),
@@ -33,7 +32,7 @@ public class CurrencyMapper {
         );
     }
 
-    public Currency toCurrency(CurrencyCreatingRequest currencyCreatingRequest) {
+    public Currency toEntity(CurrencyCreatingRequest currencyCreatingRequest) {
         Currency currency = new Currency();
         currency.setCode(currencyCreatingRequest.getCode());
         currency.setFullName(currencyCreatingRequest.getFullName());

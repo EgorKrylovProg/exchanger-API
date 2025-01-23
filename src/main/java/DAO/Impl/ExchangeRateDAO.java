@@ -58,7 +58,7 @@ public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
     }
 
     @Override
-    public Optional<ExchangeRate> get(String codes) throws DatabaseAccessException {
+    public Optional<ExchangeRate> get(String currencyPairCodes) throws DatabaseAccessException {
         Optional<ExchangeRate> exchangeRateOptional = Optional.empty();
 
         try (Connection connection = dataBaseSqlite.getConnection()) {
@@ -80,8 +80,8 @@ public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
                             "JOIN currencies AS cu ON er.target_currency_id = cu.id " +
                             "WHERE c.code = ? AND cu.code =?;"
             );
-            preparedStatement.setString(1, codes.substring(0, 3));
-            preparedStatement.setString(2, codes.substring(3, 6));
+            preparedStatement.setString(1, currencyPairCodes.substring(0, 3));
+            preparedStatement.setString(2, currencyPairCodes.substring(3, 6));
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

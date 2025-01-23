@@ -1,20 +1,20 @@
 package Dto.Currency;
 
-public class CurrencyReadingResponse {
+public class CurrencyResponse {
 
     private Integer id;
     private String fullName;
     private String code;
     private String sign;
 
-    public CurrencyReadingResponse(Integer id, String fullName, String code, String sign) {
+    public CurrencyResponse(Integer id, String fullName, String code, String sign) {
         this.id = id;
         this.fullName = fullName;
         this.code = code;
         this.sign = sign;
     }
 
-    public CurrencyReadingResponse() {
+    public CurrencyResponse() {
     }
 
     public int getId() {

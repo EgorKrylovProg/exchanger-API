@@ -1,18 +1,18 @@
 package Controller.Serializer;
 
-import Dto.ExchangeRate.ExchangeRateReadingResp;
+import Dto.ExchangeRate.ExchangeRateResp;
 
 import java.util.List;
 
 public class ExchangeRateSerializerToJson {
 
-    public String serializeDto(ExchangeRateReadingResp dto) {
+    public String serializeDto(ExchangeRateResp dto) {
         return dto.toString();
     }
 
-    public String serializeListDto(List<ExchangeRateReadingResp> listDto) {
+    public String serializeListDto(List<ExchangeRateResp> listDto) {
         StringBuilder jsonStr = new StringBuilder("[");
-        for (ExchangeRateReadingResp dto: listDto) {
+        for (ExchangeRateResp dto: listDto) {
             jsonStr.append(dto).append(",");
         }
         jsonStr.delete(jsonStr.length() - 1, jsonStr.length()).append("]");

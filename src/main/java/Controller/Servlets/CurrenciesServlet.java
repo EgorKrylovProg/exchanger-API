@@ -2,7 +2,7 @@ package Controller.Servlets;
 
 import Controller.Serializer.CurrencySerializerToJson;
 import Dto.Currency.CurrencyCreatingRequest;
-import Dto.Currency.CurrencyReadingResponse;
+import Dto.Currency.CurrencyResponse;
 import Entity.Currency;
 import Exceptions.*;
 import Service.Impl.CurrencyService;
@@ -30,7 +30,7 @@ public class CurrenciesServlet extends HttpServlet {
 
         try {
 
-            List<CurrencyReadingResponse> currenciesDto = currencyService.readAll().stream().map(mapper::toCurrencyReadingResponse).toList();
+            List<CurrencyResponse> currenciesDto = currencyService.readAll().stream().map(mapper::toDtoResponse).toList();
             String jsonResponse = serializerToJson.serializeListDto(currenciesDto);
 
             writer.print(jsonResponse);
@@ -50,13 +50,13 @@ public class CurrenciesServlet extends HttpServlet {
 
         try {
 
-            CurrencyCreatingRequest currencyForCreating = mapper.toCurrencyCreatingRequest(req);
-            Currency currency = currencyService.create(mapper.toCurrency(currencyForCreating));
-            String jsonResponse = serializerToJson.serializeDto(mapper.toCurrencyReadingResponse(currency));
+            CurrencyCreatingRequest currencyForCreating = mapper.toCreatingRequest(req);
+            Currency currency = currencyService.create(mapper.toEntity(currencyForCreating));
+            String jsonResponse = serializerToJson.serializeDto(mapper.toDtoResponse(currency));
 
             writer.print(jsonResponse);
             resp.setStatus(201);
-        } catch (IncorrectDataException | NoDataFoundException e) {
+        } catch (IncorrectUrlException | IncorrectDataException e) {
             writer.print(e);
             resp.setStatus(400);
         } catch (DataDuplicationException e) {
@@ -65,6 +65,8 @@ public class CurrenciesServlet extends HttpServlet {
         } catch (DatabaseAccessException e) {
             writer.print(e);
             resp.setStatus(500);
+        } catch (NoDataFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             writer.close();
         }
