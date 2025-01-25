@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="914f3df3-9684-4702-8b96-e0e89a2fb359" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeRateServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateCreatingRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateReadingRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateUpdatingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Mapper/CurrencyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Mapper/CurrencyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Mapper/ExchangeRateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Mapper/ExchangeRateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Serializer/CurrencySerializerToJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Serializer/CurrencySerializerToJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Serializer/ExchangeRateSerializerToJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Serializer/ExchangeRateSerializerToJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrenciesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrenciesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrencyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrencyServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeRatesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeRatesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DataBaseSqlite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DataBaseSqlite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyCreatingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyCreatingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyReadingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyReadingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyReadingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateReadingResp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateResp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Currency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/ExchangeRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangeRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangeRateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
