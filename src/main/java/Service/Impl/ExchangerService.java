@@ -1,8 +1,13 @@
 package Service.Impl;
 
 import DAO.DataBaseSqlite;
+import DAO.Impl.CurrenciesDAO;
 import DAO.Impl.ExchangeRateDAO;
+import DAO.Interfaces.DAO;
 import DAO.Interfaces.UpdateDAO;
+import Dto.Exchange.ExchangeInformation;
+import Dto.Exchange.ExchangeRequest;
+import Entity.Currency;
 import Entity.ExchangeRate;
 import Exceptions.DatabaseAccessException;
 import Exceptions.NoDataFoundException;
@@ -12,12 +17,27 @@ import java.util.Optional;
 public class ExchangerService {
 
     UpdateDAO<String, ExchangeRate> exchangeRateDAO = new ExchangeRateDAO(new DataBaseSqlite());
+    DAO<String, Currency> currencyDAO = new CurrenciesDAO(new DataBaseSqlite());
 
-    public Double exchange(String baseCurrencyCode, String targetCurrencyCode, Double amount) throws NoDataFoundException, DatabaseAccessException {
-        return getRate(baseCurrencyCode, targetCurrencyCode) * amount;
+    public ExchangeInformation exchangeCurrency(ExchangeRequest exchangeRequest) throws NoDataFoundException, DatabaseAccessException {
+        Currency baseCurrency = currencyDAO.get(exchangeRequest.getFromCurrency())
+                .orElseThrow(() -> new NoDataFoundException("There is no information about the currency you want to exchange!"));
+        Currency targetCurrency = currencyDAO.get(exchangeRequest.getToCurrency())
+                .orElseThrow(() -> new NoDataFoundException("There is no information about the currency you want to receive!"));
+
+        Double rate = getRate(exchangeRequest.getFromCurrency(), exchangeRequest.getToCurrency());
+        Double convertedAmount = convertCurrency(exchangeRequest.getAmount(), rate);
+
+        return new ExchangeInformation(
+                baseCurrency,
+                targetCurrency,
+                rate,
+                exchangeRequest.getAmount(),
+                convertedAmount
+        );
     }
 
-    public Double getRate(String baseCurrencyCode, String targetCurrencyCode) throws DatabaseAccessException, NoDataFoundException {
+    private Double getRate(String baseCurrencyCode, String targetCurrencyCode) throws DatabaseAccessException, NoDataFoundException {
 
         Optional<ExchangeRate> exchangeRate = exchangeRateDAO.get(baseCurrencyCode + targetCurrencyCode);
         if (exchangeRate.isPresent()) {
@@ -36,4 +56,9 @@ public class ExchangerService {
         }
         throw new NoDataFoundException("No exchange rate was found!");
     }
+
+    private Double convertCurrency(Double amount, Double rate) {
+        return amount * rate;
+    }
+
 }
