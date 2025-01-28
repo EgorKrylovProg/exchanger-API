@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="914f3df3-9684-4702-8b96-e0e89a2fb359" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Mapper/ExchangeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Serializer/ExchangeSerializerToJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/Exchange/ExchangeInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/Exchange/ExchangeRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dto/Exchange/ExchangeResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateCreatingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateCreatingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
