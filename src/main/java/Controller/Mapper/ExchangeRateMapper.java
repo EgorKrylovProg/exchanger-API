@@ -12,6 +12,12 @@ import Exceptions.IncorrectUrlException;
 import Exceptions.NoDataFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class ExchangeRateMapper {
 
     CurrencyMapper currencyMapper = new CurrencyMapper();
@@ -42,10 +48,23 @@ public class ExchangeRateMapper {
         );
     }
 
-    public ExchangeRateUpdatingRequest toUpdatingRequest(HttpServletRequest req) throws IncorrectDataException, IncorrectUrlException, NoDataFoundException {
+    public ExchangeRateUpdatingRequest toUpdatingRequest(HttpServletRequest req) throws IncorrectDataException, IncorrectUrlException, NoDataFoundException, IOException {
+        BufferedReader reader = req.getReader();
+        StringBuilder requestBody = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            requestBody.append(line);
+        }
+        String rawBody = requestBody.toString();
+
+        Map<String, String> params = Arrays.stream(rawBody.split("&"))
+                .map(param -> param.split("="))
+                .collect(Collectors.toMap(p -> p[0], p -> p[1]));
+
+        String rate = params.get("rate"); // Достаём rate
         return new ExchangeRateUpdatingRequest(
                 req.getPathInfo().substring(1),
-                req.getParameter("rate")
+                rate
         );
     }
 

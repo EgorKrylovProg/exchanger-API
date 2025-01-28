@@ -8,6 +8,6 @@ public class NoDataFoundException extends Exception {
 
     @Override
     public String toString() {
-        return String.format("{\n \"message\": %s\n}", getMessage());
+        return String.format("{\n \"message\": \"%s\"\n}", getMessage());
     }
 }

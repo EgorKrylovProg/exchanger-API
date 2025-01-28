@@ -54,9 +54,9 @@ public class CurrencyResponse {
         return String.format(
                 "{" +
                      "\"id\": %d," +
-                     "\"name\": %s," +
-                     "\"code\": %s," +
-                     "\"sign\": %s" +
+                     "\"name\": \"%s\"," +
+                     "\"code\": \"%s\"," +
+                     "\"sign\": \"%s\"" +
                 "}",
                 id, fullName, code, sign);
     }

@@ -41,6 +41,8 @@ public class ExchangeRatesServlet extends HttpServlet {
         } catch (DatabaseAccessException e) {
             writer.print(e);
             resp.setStatus(500);
+        } finally {
+            writer.close();
         }
     }
 
@@ -69,6 +71,8 @@ public class ExchangeRatesServlet extends HttpServlet {
         } catch (IncorrectUrlException | IncorrectDataException e) {
             writer.print(e);
             resp.setStatus(400);
+        } finally {
+            writer.close();
         }
     }
 }

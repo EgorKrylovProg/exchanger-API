@@ -11,7 +11,7 @@ public class ExchangeRateUpdatingRequest {
 
     public ExchangeRateUpdatingRequest(String currencyPairCodes, String rate) throws IncorrectDataException, IncorrectUrlException, NoDataFoundException {
         setCurrencyPairCodes(currencyPairCodes);
-        setRate(rate);
+        this.setRate(rate);
     }
 
     public ExchangeRateUpdatingRequest() {
@@ -37,7 +37,7 @@ public class ExchangeRateUpdatingRequest {
 
     public void setRate(String rate) throws IncorrectUrlException, IncorrectDataException {
         if (rate == null || rate.isBlank()) {
-            throw new IncorrectUrlException("Incorrect rate parameter!");
+            throw new IncorrectUrlException("Incorrect rate parameter!" + rate);
         }
         if (Double.parseDouble(rate) <= 0) {
             throw new IncorrectDataException("Incorrect exchange rate!");

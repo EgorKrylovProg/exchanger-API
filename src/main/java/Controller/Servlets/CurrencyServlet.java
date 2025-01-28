@@ -46,6 +46,8 @@ public class CurrencyServlet extends HttpServlet {
         } catch (DatabaseAccessException e) {
             writer.print(e);
             resp.setStatus(500);
+        } finally {
+            writer.close();
         }
     }
 }
