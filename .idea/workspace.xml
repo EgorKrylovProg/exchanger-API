@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="914f3df3-9684-4702-8b96-e0e89a2fb359" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Filters/CorsFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolSqlite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Mapper/ExchangeRateMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Mapper/ExchangeRateMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/Currency/CurrencyResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DataBaseSqlite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Impl/CurrenciesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/CurrenciesDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateUpdatingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateUpdatingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exceptions/DataDuplicationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exceptions/DataDuplicationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exceptions/DatabaseAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exceptions/DatabaseAccessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exceptions/IncorrectDataException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exceptions/IncorrectDataException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exceptions/IncorrectUrlException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exceptions/IncorrectUrlException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exceptions/NoDataFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exceptions/NoDataFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/Impl/CurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/CurrencyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangeRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangeRateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,8 +65,8 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="DataBaseSqlite" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DAO.DataBaseSqlite" />
+    <configuration name="ConnectionPoolSqlite" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DAO.ConnectionPoolSqlite" />
       <module name="exchanger-API" />
       <extension name="coverage">
         <pattern>
@@ -81,7 +80,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DataBaseSqlite" />
+        <item itemvalue="Application.ConnectionPoolSqlite" />
       </list>
     </recent_temporary>
   </component>

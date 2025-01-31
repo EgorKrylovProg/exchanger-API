@@ -1,6 +1,5 @@
 package Service.Impl;
 
-import DAO.DataBaseSqlite;
 import DAO.Impl.ExchangeRateDAO;
 import DAO.Interfaces.UpdateDAO;
 import Entity.Currency;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class ExchangeRateService implements UpdatableService<String, ExchangeRate> {
 
-    private final UpdateDAO<String, ExchangeRate> exchangeRateDAO = new ExchangeRateDAO(new DataBaseSqlite());
+    private final UpdateDAO<String, ExchangeRate> exchangeRateDAO = new ExchangeRateDAO();
     private final Service<String, Currency> currencyService = new CurrencyService();
 
     @Override

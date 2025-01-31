@@ -37,7 +37,7 @@ public class ExchangeRateUpdatingRequest {
 
     public void setRate(String rate) throws IncorrectUrlException, IncorrectDataException {
         if (rate == null || rate.isBlank()) {
-            throw new IncorrectUrlException("Incorrect rate parameter!" + rate);
+            throw new IncorrectUrlException("Incorrect rate parameter!");
         }
         if (Double.parseDouble(rate) <= 0) {
             throw new IncorrectDataException("Incorrect exchange rate!");

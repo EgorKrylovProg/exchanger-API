@@ -7,14 +7,12 @@ import Exceptions.DataDuplicationException;
 import Exceptions.DatabaseAccessException;
 import Exceptions.NoDataFoundException;
 import Service.Interface.Service;
-import DAO.DataBaseSqlite;
 
 import java.util.List;
 
 public class CurrencyService implements Service<String, Currency> {
 
-    private final DAO<String, Currency> currencyDAO = new CurrenciesDAO(new DataBaseSqlite());
-
+    private final DAO<String, Currency> currencyDAO = new CurrenciesDAO();
 
     @Override
     public List<Currency> readAll() throws DatabaseAccessException {

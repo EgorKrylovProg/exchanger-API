@@ -1,12 +1,13 @@
 package DAO.Impl;
 
-import DAO.DataBaseSqlite;
 import DAO.Interfaces.DAO;
 import DAO.Mapper.CurrencyMapper;
 import Entity.Currency;
 import Exceptions.DataDuplicationException;
 import Exceptions.DatabaseAccessException;
 
+import DAO.ConnectionPoolSqlite;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,18 +15,14 @@ import java.util.Optional;
 
 public class CurrenciesDAO implements DAO<String, Currency> {
 
-    DataBaseSqlite dataBaseSqlite;
+    DataSource dataSource = new ConnectionPoolSqlite().getBaseDataSource();
     CurrencyMapper currencyMapper = new CurrencyMapper();
-
-    public CurrenciesDAO(DataBaseSqlite dataBaseSqlite) {
-        this.dataBaseSqlite = dataBaseSqlite;
-    }
 
     @Override
     public List<Currency> getAll() throws DatabaseAccessException {
         List<Currency> currencies = new ArrayList<>();
 
-        try (Connection connection = dataBaseSqlite.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
 
             Statement statement = connection.createStatement();
 
@@ -34,9 +31,9 @@ public class CurrenciesDAO implements DAO<String, Currency> {
                 currencies.add(currencyMapper.toCurrency(resultSet));
             }
         } catch (SQLException e) {
-            throw new DatabaseAccessException("Problems accessing the database!");
+            throw new DatabaseAccessException(e.getMessage());
         }
-
+//        "Problems accessing the database!"
         return currencies;
     }
 
@@ -44,7 +41,7 @@ public class CurrenciesDAO implements DAO<String, Currency> {
     public Optional<Currency> get(String code) throws DatabaseAccessException {
         Optional<Currency> currencyOptional = Optional.empty();
 
-        try (Connection connection = dataBaseSqlite.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM currencies WHERE code = ?;");
             preparedStatement.setString(1, code);
@@ -65,7 +62,7 @@ public class CurrenciesDAO implements DAO<String, Currency> {
     public Optional<Currency> getById(Integer id) throws DatabaseAccessException {
         Optional<Currency> currencyOptional = Optional.empty();
 
-        try (Connection connection = dataBaseSqlite.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT * FROM currencies WHERE id = ?;"
@@ -86,7 +83,7 @@ public class CurrenciesDAO implements DAO<String, Currency> {
     @Override
     public Currency save(Currency currency) throws DataDuplicationException, DatabaseAccessException {
 
-        try (Connection connection = dataBaseSqlite.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO currencies(code, full_name, sign) " +
                     "VALUES(?, ?, ?) RETURNING id;", Statement.RETURN_GENERATED_KEYS);

@@ -1,6 +1,5 @@
 package Service.Impl;
 
-import DAO.DataBaseSqlite;
 import DAO.Impl.CurrenciesDAO;
 import DAO.Impl.ExchangeRateDAO;
 import DAO.Interfaces.DAO;
@@ -16,8 +15,8 @@ import java.util.Optional;
 
 public class ExchangerService {
 
-    UpdateDAO<String, ExchangeRate> exchangeRateDAO = new ExchangeRateDAO(new DataBaseSqlite());
-    DAO<String, Currency> currencyDAO = new CurrenciesDAO(new DataBaseSqlite());
+    UpdateDAO<String, ExchangeRate> exchangeRateDAO = new ExchangeRateDAO();
+    DAO<String, Currency> currencyDAO = new CurrenciesDAO();
 
     public ExchangeInformation exchangeCurrency(ExchangeRequest exchangeRequest) throws NoDataFoundException, DatabaseAccessException {
         Currency baseCurrency = currencyDAO.get(exchangeRequest.getFromCurrency())
