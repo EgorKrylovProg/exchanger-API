@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="914f3df3-9684-4702-8b96-e0e89a2fb359" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ConnectionPoolSqlite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DataBaseSqlite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Impl/CurrenciesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/CurrenciesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateUpdatingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dto/ExchangeRate/ExchangeRateUpdatingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/Impl/CurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/CurrencyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangeRateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangeRateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/Impl/ExchangerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/exchangeRate.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,15 +40,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Shelf.Project.Settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "develop",
+    "settings.editor.selected.configurable": "Shelf.Project.Settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="DAO.Interfaces" />
