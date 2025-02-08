@@ -27,7 +27,6 @@ public class CurrencyServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         var writer = resp.getWriter();
-        resp.setContentType("json");
 
         try {
             CurrencyReadingRequest currencyReadingRequest = mapper.toReadingRequest(req);

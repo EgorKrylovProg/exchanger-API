@@ -26,7 +26,6 @@ public class ExchangeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         var writer = resp.getWriter();
-        resp.setContentType("json");
 
         try {
             ExchangeRequest exchangeRequest = mapper.toRequest(req);

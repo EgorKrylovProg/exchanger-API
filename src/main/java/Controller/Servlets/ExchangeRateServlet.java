@@ -29,7 +29,7 @@ public class ExchangeRateServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         var writer = resp.getWriter();
-        resp.setContentType("json");
+
 
         try {
 
@@ -57,7 +57,6 @@ public class ExchangeRateServlet extends HttpServlet {
 
     public void doPatch(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         var writer = resp.getWriter();
-        resp.setContentType("json");
 
         try {
 

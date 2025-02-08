@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="914f3df3-9684-4702-8b96-e0e89a2fb359" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Listener/ContextListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Filters/HeadersFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Impl/CurrenciesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/CurrenciesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Impl/ExchangeRateDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrenciesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrenciesServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrencyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/CurrencyServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeRateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeRateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeRatesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeRatesServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Servlets/ExchangeServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
