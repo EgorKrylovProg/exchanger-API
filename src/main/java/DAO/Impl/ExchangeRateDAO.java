@@ -1,6 +1,5 @@
 package DAO.Impl;
 
-import DAO.ConnectionPoolSqlite;
 import DAO.Interfaces.UpdateDAO;
 import DAO.Mapper.ExchangeRateMapper;
 import Entity.ExchangeRate;
@@ -8,6 +7,9 @@ import Exceptions.DataDuplicationException;
 import Exceptions.DatabaseAccessException;
 import Exceptions.NoDataFoundException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,8 +18,20 @@ import java.util.Optional;
 
 public class ExchangeRateDAO implements UpdateDAO<String, ExchangeRate> {
 
-    DataSource dataSource = new ConnectionPoolSqlite().getBaseDataSource();
+    DataSource dataSource;
     ExchangeRateMapper exchangeRateMapper = new ExchangeRateMapper();
+
+    public ExchangeRateDAO() {
+        try {
+            Context context = new InitialContext();
+
+            dataSource = (DataSource) context.lookup("baseDataSource");
+        } catch (NamingException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 
     @Override
     public List<ExchangeRate> getAll() throws DatabaseAccessException {

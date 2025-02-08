@@ -6,7 +6,10 @@ import Entity.Currency;
 import Exceptions.DataDuplicationException;
 import Exceptions.DatabaseAccessException;
 
-import DAO.ConnectionPoolSqlite;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,8 +18,19 @@ import java.util.Optional;
 
 public class CurrenciesDAO implements DAO<String, Currency> {
 
-    DataSource dataSource = new ConnectionPoolSqlite().getBaseDataSource();
+    DataSource dataSource;
     CurrencyMapper currencyMapper = new CurrencyMapper();
+
+    public CurrenciesDAO() {
+        try {
+            Context context = new InitialContext();
+
+            dataSource = (DataSource) context.lookup("baseDataSource");
+        } catch (NamingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     @Override
     public List<Currency> getAll() throws DatabaseAccessException {
@@ -31,9 +45,8 @@ public class CurrenciesDAO implements DAO<String, Currency> {
                 currencies.add(currencyMapper.toCurrency(resultSet));
             }
         } catch (SQLException e) {
-            throw new DatabaseAccessException(e.getMessage());
+            throw new DatabaseAccessException("Problems accessing the database!");
         }
-//        "Problems accessing the database!"
         return currencies;
     }
 
